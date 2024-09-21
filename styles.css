@@ -10,13 +10,14 @@ body {
   background-color: #9b9b9b;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Открытие страницы сверху */
   height: 100vh;
+  overflow: auto; /* Добавлено для прокрутки */
 }
 
 .container {
   width: 100%;
-  max-width: 400px; /* Ограничение ширины контейнера */
+  max-width: 400px;
   background-color: #B4B4B4;
   padding: 20px;
   border-radius: 10px;
@@ -28,13 +29,13 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  gap: 15px; /* Отступы между кнопками */
+  gap: 15px;
 }
 
 button {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  font-size: 10px; /* Уменьшенный шрифт для всех кнопок */
+  font-size: 10px;
 }
 
 button:hover {
@@ -48,10 +49,9 @@ button:active {
 .logo, .balance, .action-button {
   background-color: #0066cc;
   color: white;
-  padding: 6px 13px; /* Уменьшен padding для более компактного вида */
+  padding: 6px 13px;
   border: none;
-  border-radius: 5px;
-  font-size: 12px; /* Уменьшен размер шрифта верхних кнопок */
+  font-size: 12px;
 }
 
 .main {
@@ -70,7 +70,6 @@ button:active {
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 5px;
 }
 
 .carousel-screen {
@@ -112,19 +111,28 @@ button:active {
   color: white;
   padding: 10px;
   border: none;
-  border-radius: 5px;
   font-size: 14px;
 }
 
-.new-section h3 {
-  color: white;
+.title-container {
+  background-color: #0066cc;
+  width: 100%;
+  padding: 5px 10px;
   margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.centered {
+  color: white;
+  margin: 0;
   font-size: 16px;
+  text-align: center;
+  font-weight: normal;
 }
 
 .games {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr); /* Убедитесь, что две кнопки помещаются в строку */
   gap: 10px;
 }
 
@@ -137,42 +145,36 @@ button:active {
   text-align: center;
 }
 
-.game {
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  font-size: 12px; /* Уменьшенный шрифт для всех кнопок */
-}
-
 /* Адаптация для мобильных устройств с максимальной шириной экрана 400px */
 @media only screen and (max-width: 400px) {
   .container {
     width: 100%;
     padding: 10px;
-    max-width: 100%; /* Контейнер будет занимать 100% ширины экрана */
+    max-width: 100%;
   }
 
   button {
-    font-size: 8px; /* Еще больше уменьшаем шрифт для мобильных устройств */
+    font-size: 8px;
     padding: 5px 10px;
   }
 
   .logo, .balance, .action-button {
-    padding: 4px 8px; /* Уменьшаем padding для кнопок на мобильных */
+    padding: 4px 8px;
     font-size: 10px;
   }
 
   .carousel-screen {
-    width: 200px; /* Уменьшаем ширину экрана карусели для мобильных */
+    width: 200px;
   }
 
   .dot {
     height: 8px;
-    width: 8px; /* Уменьшаем точки индикатора на мобильных */
+    width: 8px;
   }
 
   .lobby, .gift, .search {
     padding: 8px;
-    font-size: 12px; /* Уменьшение кнопок */
+    font-size: 12px;
   }
 
   .game {
@@ -181,6 +183,6 @@ button:active {
   }
 
   .games {
-    gap: 5px; /* Уменьшаем промежутки между кнопками игр */
+    gap: 5px;
   }
 }

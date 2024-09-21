@@ -4,7 +4,6 @@ let currentIndex = 0;
 const totalSlides = dots.length;
 
 function updateCarousel(index) {
-  // Обновление позиции экрана карусели
   const offset = -index * 250; // смещение карусели
   carouselScreen.style.transform = `translateX(${offset}px)`;
 
@@ -23,4 +22,3 @@ document.querySelector('.arrow-right').addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % totalSlides;
   updateCarousel(currentIndex);
 });
- 
