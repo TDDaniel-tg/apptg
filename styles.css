@@ -120,6 +120,7 @@ button:active {
   padding: 5px 10px;
   margin-bottom: 10px;
   margin-top: 10px;
+  border-radius: 5px; /* Скругление краев */
 }
 
 .centered {
@@ -132,7 +133,7 @@ button:active {
 
 .games {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Убедитесь, что две кнопки помещаются в строку */
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 
@@ -140,7 +141,7 @@ button:active {
   background-color: #0066cc;
   color: white;
   padding: 40px;
-  border-radius: 5px;
+  border-radius: 5px; /* Скругление краев */
   font-size: 16px;
   text-align: center;
 }
@@ -178,7 +179,7 @@ button:active {
   }
 
   .game {
-    padding: 30px; /* Уменьшаем размер кнопок игр */
+    padding: 30px;
     font-size: 14px;
   }
 
