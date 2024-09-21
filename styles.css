@@ -10,18 +10,17 @@ body {
   background-color: #9b9b9b;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Открытие страницы сверху */
+  align-items: flex-start; /* Выравнивание по верхнему краю */
   height: 100vh;
-  overflow: auto; /* Добавлено для прокрутки */
 }
 
 .container {
   width: 100%;
-  max-width: 400px;
+  max-width: 400px; /* Ограничение ширины контейнера */
   background-color: #B4B4B4;
   padding: 20px;
   border-radius: 10px;
-  overflow: auto;
+  overflow: hidden; /* Скрываем все элементы, выходящие за пределы контейнера */
 }
 
 .header {
@@ -29,13 +28,13 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  gap: 15px;
+  gap: 15px; /* Отступы между кнопками */
 }
 
 button {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  font-size: 10px;
+  font-size: 10px; /* Уменьшенный шрифт для всех кнопок */
 }
 
 button:hover {
@@ -49,9 +48,10 @@ button:active {
 .logo, .balance, .action-button {
   background-color: #0066cc;
   color: white;
-  padding: 6px 13px;
+  padding: 6px 13px; /* Уменьшен padding для более компактного вида */
   border: none;
-  font-size: 12px;
+  border-radius: 5px;
+  font-size: 12px; /* Уменьшен размер шрифта верхних кнопок */
 }
 
 .main {
@@ -63,6 +63,8 @@ button:active {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  position: relative; /* Устанавливаем позиционирование для контейнера карусели */
+  overflow: hidden; /* Скрываем все элементы, выходящие за пределы контейнера */
 }
 
 .arrow-left, .arrow-right {
@@ -70,6 +72,7 @@ button:active {
   color: white;
   border: none;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .carousel-screen {
@@ -78,6 +81,27 @@ button:active {
   background-color: black;
   margin: 0 10px;
   transition: transform 0.5s ease-in-out;
+  border-radius: 15px;
+}
+
+.carousel-item {
+  width: 220px; /* Ширина элемента */
+  height: 80px; /* Высота элемента */
+  background-color: black;
+  color: white;
+  display: flex; /* Используем flex для центрирования */
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center; /* Центрирование по вертикали */
+  font-size: 14px; /* Размер шрифта */
+  border-radius: 15px; /* Скругление краев */
+  margin: 0 auto; /* Центрирование элемента по горизонтали */
+  opacity: 0; /* Начальная прозрачность */
+  position: absolute; /* Позиционируем элементы абсолютно */
+  transition: opacity 0.5s ease; /* Анимация прозрачности */
+}
+
+.carousel-item.active {
+  opacity: 1; /* Прозрачность при показе */
 }
 
 .carousel-dots {
@@ -93,11 +117,12 @@ button:active {
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
   display: inline-block;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Анимация для точек */
 }
 
 .dot.active {
   background-color: #0066cc;
+  transform: scale(1.2); /* Увеличение активной точки */
 }
 
 .buttons {
@@ -111,29 +136,19 @@ button:active {
   color: white;
   padding: 10px;
   border: none;
+  border-radius: 5px;
   font-size: 14px;
 }
 
-.title-container {
-  background-color: #0066cc;
-  width: 100%;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  border-radius: 5px; /* Скругление краев */
-}
-
-.centered {
+.new-section h3 {
   color: white;
-  margin: 0;
+  margin-bottom: 10px;
   font-size: 16px;
-  text-align: center;
-  font-weight: normal;
 }
 
 .games {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
@@ -141,49 +156,62 @@ button:active {
   background-color: #0066cc;
   color: white;
   padding: 40px;
-  border-radius: 5px; /* Скругление краев */
+  border-radius: 5px;
   font-size: 16px;
   text-align: center;
 }
 
+.game {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 12px; /* Уменьшенный шрифт для всех кнопок */
+}
+
 /* Адаптация для мобильных устройств с максимальной шириной экрана 400px */
 @media only screen and (max-width: 400px) {
+  body {
+    margin: 0; /* Убираем все отступы */
+    padding: 0; /* Убираем все внутренние отступы */
+  }
+
   .container {
     width: 100%;
-    padding: 10px;
-    max-width: 100%;
+    padding: 10px; /* Убедитесь, что отступы минимальные */
+    max-width: 100%; /* Контейнер будет занимать 100% ширины экрана */
+    margin-top: 0; /* Убираем верхний отступ */
   }
 
   button {
-    font-size: 8px;
-    padding: 5px 10px;
-  }
-
-  .logo, .balance, .action-button {
-    padding: 4px 8px;
-    font-size: 10px;
+    font-size: 8px; /* Уменьшенный шрифт для мобильных устройств */
+    padding: 5px 10px; /* Уменьшенный padding */
   }
 
   .carousel-screen {
-    width: 200px;
+    width: 200px; /* Уменьшаем ширину экрана карусели для мобильных */
+  }
+
+  .carousel-item {
+    width: 180px; /* Уменьшаем ширину квадрата */
+    height: 70px; /* Уменьшаем высоту квадрата */
+    font-size: 12px; /* Уменьшаем размер шрифта внутри квадрата */
   }
 
   .dot {
     height: 8px;
-    width: 8px;
+    width: 8px; /* Уменьшаем точки индикатора на мобильных */
   }
 
   .lobby, .gift, .search {
     padding: 8px;
-    font-size: 12px;
+    font-size: 12px; /* Уменьшение кнопок */
   }
 
   .game {
-    padding: 30px;
-    font-size: 14px;
+    padding: 30px; /* Уменьшаем размер кнопок игр */
+    font-size: 14px; /* Уменьшаем размер шрифта для кнопок игр */
   }
 
   .games {
-    gap: 5px;
+    gap: 5px; /* Уменьшаем промежутки между кнопками игр */
   }
 }
