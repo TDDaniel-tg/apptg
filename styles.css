@@ -168,11 +168,11 @@ button:active {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
-
 .game {
   background-color: #0066cc;
   color: white;
-  padding: 40px;
+  width: 100%; /* Занимает всю доступную ширину */
+  aspect-ratio: 1; /* Устанавливает соотношение сторон 1:1 (квадрат) */
   border-radius: 5px;
   border-color: gold;
   font-size: 16px;
@@ -180,8 +180,12 @@ button:active {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   font-size: 12px; /* Уменьшенный шрифт для всех кнопок */
+  display: flex; /* Используем flex для центрирования */
+  justify-content: center; /* Центрируем по горизонтали */
+  align-items: center; /* Центрируем по вертикали */
   margin: 0; /* Убираем любые отступы сверху и снизу */
 }
+
 
 /* Адаптация для мобильных устройств с максимальной шириной экрана 400px */
 @media only screen and (max-width: 400px) {
