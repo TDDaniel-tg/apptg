@@ -10,17 +10,19 @@ body {
   background-color: #9b9b9b;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Выравнивание по верхнему краю */
+  align-items: flex-start;
   height: 100vh;
 }
 
 .container {
   width: 100%;
-  max-width: 400px; /* Ограничение ширины контейнера */
-  background-color: #B4B4B4;
+  max-width: 400px;
   padding: 20px;
   border-radius: 10px;
-  overflow: hidden; /* Скрываем все элементы, выходящие за пределы контейнера */
+  overflow: hidden;
+
+  /* Добавление градиента к фону контейнера */
+  background: radial-gradient(circle, #000000, #ff0000);
 }
 
 .header {
@@ -140,10 +142,27 @@ button:active {
   font-size: 14px;
 }
 
-.new-section h3 {
+.title-container {
+  position: relative;
   color: white;
   margin-bottom: 10px;
   font-size: 16px;
+  text-align: center;
+  z-index: 1; /* Устанавливаем z-index для текста, чтобы рамка была за ним */
+}
+
+/* Добавляем рамку позади текста "Быстрые игры" */
+.title-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* Уменьшаем ширину рамки */
+  height: 90%; /* Уменьшаем высоту рамки */
+  background: linear-gradient(45deg, #0066cc,  #0066cc);
+  border-radius: 5px;
+  z-index: -1; /* Отправляем рамку за текст */
 }
 
 .games {
@@ -159,9 +178,6 @@ button:active {
   border-radius: 5px;
   font-size: 16px;
   text-align: center;
-}
-
-.game {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   font-size: 12px; /* Уменьшенный шрифт для всех кнопок */
@@ -170,48 +186,48 @@ button:active {
 /* Адаптация для мобильных устройств с максимальной шириной экрана 400px */
 @media only screen and (max-width: 400px) {
   body {
-    margin: 0; /* Убираем все отступы */
-    padding: 0; /* Убираем все внутренние отступы */
+    margin: 0;
+    padding: 0;
   }
 
   .container {
     width: 100%;
-    padding: 10px; /* Убедитесь, что отступы минимальные */
-    max-width: 100%; /* Контейнер будет занимать 100% ширины экрана */
-    margin-top: 0; /* Убираем верхний отступ */
+    padding: 10px;
+    max-width: 100%;
+    margin-top: 0;
   }
 
   button {
-    font-size: 8px; /* Уменьшенный шрифт для мобильных устройств */
-    padding: 5px 10px; /* Уменьшенный padding */
+    font-size: 8px;
+    padding: 5px 10px;
   }
 
   .carousel-screen {
-    width: 200px; /* Уменьшаем ширину экрана карусели для мобильных */
+    width: 200px;
   }
 
   .carousel-item {
-    width: 180px; /* Уменьшаем ширину квадрата */
-    height: 70px; /* Уменьшаем высоту квадрата */
-    font-size: 12px; /* Уменьшаем размер шрифта внутри квадрата */
+    width: 180px;
+    height: 70px;
+    font-size: 12px;
   }
 
   .dot {
     height: 8px;
-    width: 8px; /* Уменьшаем точки индикатора на мобильных */
+    width: 8px;
   }
 
   .lobby, .gift, .search {
     padding: 8px;
-    font-size: 12px; /* Уменьшение кнопок */
+    font-size: 12px;
   }
 
   .game {
-    padding: 30px; /* Уменьшаем размер кнопок игр */
-    font-size: 14px; /* Уменьшаем размер шрифта для кнопок игр */
+    padding: 30px;
+    font-size: 14px;
   }
 
   .games {
-    gap: 5px; /* Уменьшаем промежутки между кнопками игр */
+    gap: 5px;
   }
 }
