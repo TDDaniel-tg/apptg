@@ -87,8 +87,8 @@ button:active {
 }
 
 .carousel-item {
-  width: 220px; /* Ширина элемента */
-  height: 80px; /* Высота элемента */
+  width: 250px; /* Ширина элемента */
+  height: 100px; /* Высота элемента */
   background-color: black;
   color: white;
   display: flex; /* Используем flex для центрирования */
