@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+<link rel="stylesheet" href="styles.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="col-md-6 offset-md-3">
+        <form id="tg">
+            <div class="form-group">
+                <label class="form-label">Фамилия Имя Отчество </label>
+                <input type="text" name="name" class="form-control">
+            </div>
+            <!-- /.form-group -->
+
+            <div class="form-group">
+                <label class="form-label">Номер телефона</label>
+                <input type="" name="number" class="form-control">
+            </div>
+           
+
+            <div class="form-group">
+                <label class="form-label">Город</label>
+                <input type="text" name="city" class="form-control">
+            </div>
+       
+            <div class="form-group">
+                <label class="form-label">Весовая категория</label>
+                <input type="number" name="heigh" class="form-control">
+            </div>
+          
+            <div class="form-group">
+                <label class="form-label">Возраст</label>
+                <input type="number" name="age" class="form-control">
+            </div>
+      
+
+            <button type="submit" class="btn btn-primary mt-4">Отправить</button>
+        </form>
+    </div>
+    <!-- /.col-md-6 offset-md-3 -->
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+const TOKEN = "7548732983:AAF-3MbGvUE5oLP044iYeklfVAeDAI56cLw";
+const CHAT_ID = "-1002357266701";
+const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+
+document.getElementById('tg').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let message = "<b>Заявка с сайта</b>\n";
+    message += `<b>ФИО:</b> ${this.name.value}\n`;
+    message += `<b>Номер телефона:</b> ${this.number.value}\n`;
+    message += `<b>Город:</b> ${this.city.value}\n`;
+    message += `<b>Весовая :</b> ${this.heigh.value}\n`;
+    message += `<b>Возраст:</b> ${this.age.value}\n`;
+
+    axios.post(URI_API, {
+        chat_id: CHAT_ID,
+        parse_mode: 'html',
+        text: message
+    });
+});
+</script>
+
+</html>
